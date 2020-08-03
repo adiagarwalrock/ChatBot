@@ -8,16 +8,17 @@ english_bot = ChatBot("Chatterbot", storage_adapter="chatterbot.storage.SQLStora
 trainer = ChatterBotCorpusTrainer(english_bot)
 trainer.train("chatterbot.corpus.english")
 
-@app.route("/")
 
+@app.route("/")
 def home():
     return render_template("index.html")
 
-@app.route("/get")
 
+@app.route("/get")
 def get_bot_response():
-    userText = request.args.get('msg')
-    return str(english_bot.get_response(userText))
+    user_text = request.args.get('msg')
+    return str(english_bot.get_response(user_text))
+
 
 if __name__ == "__main__":
     app.run()
